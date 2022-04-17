@@ -16,18 +16,18 @@ private:
 		void Spawn(); 
 		bool HasMine(); 
 		State HasState(); 
-		void Draw2(const Vei2& vec, Graphics gfx) const;
+		void Draw(const Vei2& vec, Graphics gfx) const;
 		State state = State::hidden;
 	};
 
 public: 
 	void Draw(Graphics& gfx) const; 
 	void OnRevealClick();
-	Tile& TileAt( const Vei2& gridPos);
-	const Tile& TileAt(const Vei2& gridPos) const;
 	void SpawnMine(); 
-	Graphics gfx; 
 	
+private: 
+	Tile& TileAt(const Vei2& gridPos);
+	const Tile& TileAt(const Vei2& gridPos) const;
 
 private: 
 	static constexpr int nMines = 10;

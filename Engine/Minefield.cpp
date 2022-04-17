@@ -4,7 +4,14 @@
 void Minefield::Draw(Graphics& gfx)const
 {
 	
-	for (int x = 0; x < width; x++) {
+
+	for (Vei2 gridpos = { 0,0 }; gridpos.y < height; gridpos.y++) {
+		for (gridpos.x = 0; gridpos.x < width; gridpos.x++) {
+			TileAt(gridpos).Draw(gridpos * SpriteCodex::tileSize, gfx);
+		}
+	}
+
+	/*for (int x = 0; x < width; x++) {
 
 		for (int y = 0; y < height; y++) {
 			
@@ -13,7 +20,7 @@ void Minefield::Draw(Graphics& gfx)const
 			TileAt(temp).Draw2(temp*SpriteCodex::tileSize, gfx); 
 
 		}
-	}
+	}*/
 
 	
 	
@@ -63,7 +70,7 @@ bool Minefield::Tile::HasMine()
 	return hasMine;
 }
 
-void Minefield::Tile::Draw2(const Vei2 &vec, Graphics gfx)const
+void Minefield::Tile::Draw(const Vei2 &vec, Graphics gfx)const
 {
 	switch (state) {
 	case State::hidden: 
