@@ -10,24 +10,29 @@ private:
 	private: 
 		enum class State {hidden, flagged, revealed};
 		bool hasMine = false; 
-		State state =  State::hidden; 
+		
 
 	public:
-		void SpawnMine(int numberOfMines); 
+		void Spawn(); 
 		bool HasMine(); 
+		State HasState(); 
+		void Draw2(const Vei2& vec, Graphics gfx) const;
+		State state = State::hidden;
 	};
 
 public: 
-	void Draw(Graphics& gfx, Vei2& loc); 
+	void Draw(Graphics& gfx) const; 
 	void OnRevealClick();
-	Tile& AtTile(Vei2& loc);
+	Tile& TileAt( const Vei2& gridPos);
+	const Tile& TileAt(const Vei2& gridPos) const;
+	void SpawnMine(); 
+	Graphics gfx; 
 	
 
 private: 
 	static constexpr int nMines = 10;
 	static constexpr int width = 20;
 	static constexpr int height = 16;
-public:
 	Tile fd[width * height];
 
 

@@ -26,6 +26,7 @@
 #include "Colors.h"
 #include "RectI.h"
 
+
 class Graphics
 {
 public:
@@ -81,4 +82,5 @@ private:
 public:
 	static constexpr int ScreenWidth = 800;
 	static constexpr int ScreenHeight = 600;
+	
 };
